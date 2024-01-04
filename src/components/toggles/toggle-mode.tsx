@@ -1,6 +1,6 @@
 import { useScreenSize } from "@/hooks/use-screen-size";
 import { type FC, Suspense, lazy } from "react";
-import { observer } from "mobx-react";
+import { observer } from "mobx-react-lite";
 const ToggleDesktop = lazy(() => import("@components/toggles/toggle-desktop"));
 const ToggleMobile = lazy(() => import("@components/toggles/toggle-mobile"));
 

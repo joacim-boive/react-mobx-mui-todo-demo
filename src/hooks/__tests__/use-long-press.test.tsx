@@ -1,5 +1,5 @@
 import { DO_DIALOG } from "@/actions";
-import { LongPressProvider } from "@/providers/long-press-provider";
+import { LongPressProvider } from "@/contexts/long-press-context";
 import { useLongPress } from "@/hooks/use-long-press";
 import { fireEvent } from "@testing-library/dom";
 import { act, renderHook, RenderHookOptions } from "@testing-library/react";

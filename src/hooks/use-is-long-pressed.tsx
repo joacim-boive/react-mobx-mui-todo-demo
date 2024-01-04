@@ -1,11 +1,11 @@
 import { useContext } from "react";
-import { MobXProviderContext } from "mobx-react";
-import { TStore } from "@/providers/long-press-provider";
+import { LongPressContext } from "@/contexts/long-press-context";
+import { TLongPress } from "@/stores/long-press-state";
 
-export const useIsLongPressed = () => {
-  const { longPress } = useContext(MobXProviderContext) as TStore;
-  if (longPress === undefined)
-    throw new Error("longPress must be used within a LongPressProvider");
-
-  return longPress;
+export const useIsLongPressed = (): TLongPress => {
+  const context = useContext(LongPressContext);
+  if (context === undefined) {
+    throw new Error("useLongPress must be used within a LongPressProvider");
+  }
+  return context;
 };

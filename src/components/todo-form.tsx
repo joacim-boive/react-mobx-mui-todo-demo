@@ -13,7 +13,7 @@ import { type FC } from "react";
 import { useForm } from "react-hook-form";
 import { v4 as uuidv4 } from "uuid";
 import * as z from "zod";
-import { observer } from "mobx-react";
+import { observer } from "mobx-react-lite";
 
 const formSchema = z.object({
   title: z.string().min(2, {

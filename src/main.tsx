@@ -1,4 +1,4 @@
-import { LongPressProvider } from "@/providers/long-press-provider.tsx";
+import { LongPressProvider } from "@/contexts/long-press-context.tsx";
 import { ScreenSizeProvider } from "@/contexts/small-screen-context.tsx";
 import { ThemeProvider } from "@/contexts/theme-context.tsx";
 import { TodosProvider } from "@/contexts/todos-context";
