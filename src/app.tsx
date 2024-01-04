@@ -1,13 +1,10 @@
 import { TodoForm } from "@/components/todo-form";
 import { TodoList } from "@/components/todo-list";
 import { ToggleMode } from "@/components/toggles/toggle-mode";
-import { injectStores } from "@mobx-devtools/tools";
 import { type FC } from "react";
-import { appStore } from "./stores/app-store";
-import { observer } from "mobx-react";
-injectStores({ appStore });
-// Get it?
-const App: FC = observer(() => {
+
+// eslint-disable-next-line mobx/missing-observer
+const App: FC = () => {
   return (
     <main role="main">
       <section className="relative justify-center mx-auto md:pt-8 md:w-2/3 lg:w-1/2 xl:min-w-min">
@@ -31,6 +28,6 @@ const App: FC = observer(() => {
       </section>
     </main>
   );
-});
+};
 
 export default App;

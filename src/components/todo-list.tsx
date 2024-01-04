@@ -1,8 +1,9 @@
 import { useTodo } from "@/hooks/use-todo";
 import { TodoItem } from "@components/todo-item";
 import { type FC } from "react";
+import { observer } from "mobx-react";
 
-export const TodoList: FC = () => {
+export const TodoList: FC = observer(() => {
   const { todos } = useTodo();
   return (
     <ol className="list-none">
@@ -11,4 +12,4 @@ export const TodoList: FC = () => {
       ))}
     </ol>
   );
-};
+});

@@ -13,6 +13,7 @@ import { type FC } from "react";
 import { useForm } from "react-hook-form";
 import { v4 as uuidv4 } from "uuid";
 import * as z from "zod";
+import { observer } from "mobx-react";
 
 const formSchema = z.object({
   title: z.string().min(2, {
@@ -20,7 +21,7 @@ const formSchema = z.object({
   }),
 });
 
-export const TodoForm: FC = () => {
+export const TodoForm: FC = observer(() => {
   const { addTodo, markAllDoneTodos } = useTodo();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -94,4 +95,4 @@ export const TodoForm: FC = () => {
       </form>
     </Form>
   );
-};
+});

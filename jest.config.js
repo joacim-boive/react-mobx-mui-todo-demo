@@ -11,6 +11,10 @@ export default {
     "^.+\\.tsx?$": "ts-jest",
     "^.+\\.jsx?$": "babel-jest", // add this line
   },
-  testPathIgnorePatterns: ["<rootDir>/node_modules/", "<rootDir>/.history/"],
+  testPathIgnorePatterns: [
+    "<rootDir>/node_modules/",
+    "<rootDir>/.history/",
+    "__e2e__",
+  ],
   transformIgnorePatterns: ["/node_modules/"],
 };

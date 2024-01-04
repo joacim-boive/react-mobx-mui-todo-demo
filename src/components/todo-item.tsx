@@ -1,11 +1,10 @@
 import { useTodo } from "@/hooks/use-todo";
-import { useIsLongPressed } from "@/contexts/app-context";
+import { useIsLongPressed } from "@/hooks/use-is-long-pressed";
 
 import { type TTodoItem } from "@/types/todo";
 import { Button, Checkbox, Input } from "@components/ui";
 import clsx from "clsx";
 import { memo, useCallback, useEffect, useState, useRef, type FC } from "react";
-import { IAppStore } from "@/stores/app-store";
 
 const ESCAPE_KEY = "Escape";
 const DELETE_TODO_TITLE = "Delete todo";
@@ -13,8 +12,7 @@ const DOUBLE_CLICK_TO_EDIT_TITLE = "Double click to edit";
 
 export const TodoItem: FC<{ todo: TTodoItem }> = memo(({ todo }) => {
   const { removeTodo, toggleTodo, updateTodo } = useTodo();
-  const appStore = useIsLongPressed() as IAppStore;
-  const { setIsLongPressed } = appStore;
+  const { setIsLongPressed } = useIsLongPressed();
   const [isEditing, setIsEditing] = useState(false);
   const { title, id, isCompleted } = todo;
 

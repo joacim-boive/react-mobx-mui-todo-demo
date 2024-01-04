@@ -1,16 +1,27 @@
 import { DO_DIALOG } from "@/actions";
-import { AppProvider } from "@/contexts/app-context";
+import { LongPressProvider } from "@/providers/long-press-provider";
 import { useLongPress } from "@/hooks/use-long-press";
 import { fireEvent } from "@testing-library/dom";
 import { act, renderHook, RenderHookOptions } from "@testing-library/react";
+import { observer } from "mobx-react";
+import React, { ReactNode } from "react";
+import { longPressState } from "@/stores/long-press-state.ts";
 
 jest.useFakeTimers();
+
+type TProps = {
+  children: ReactNode;
+};
 
 const renderHookWithProvider = <P, R>(
   callback: (props: P) => R,
   options?: RenderHookOptions<P>
 ) => {
-  return renderHook(callback, { ...options, wrapper: AppProvider });
+  const Wrapper: React.FC<TProps> = observer(({ children }) => (
+    <LongPressProvider longPress={longPressState}>{children}</LongPressProvider>
+  ));
+
+  return renderHook(callback, { ...options, wrapper: Wrapper });
 };
 
 describe("useLongPress", () => {

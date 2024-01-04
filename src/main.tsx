@@ -1,16 +1,22 @@
-import { AppProvider } from "@/contexts/app-context";
+import { LongPressProvider } from "@/providers/long-press-provider.tsx";
 import { ScreenSizeProvider } from "@/contexts/small-screen-context.tsx";
 import { ThemeProvider } from "@/contexts/theme-context.tsx";
 import { TodosProvider } from "@/contexts/todos-context";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./app.tsx";
-import { appStore } from "./stores/app-store";
+import { longPressState } from "@/stores/long-press-state.ts";
 import "./index.css";
+
+if (import.meta.env.MODE === "development") {
+  void import("@mobx-devtools/tools").then((module) => {
+    module.injectStores({ appStore: longPressState });
+  });
+}
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <AppProvider appStore={appStore}>
+    <LongPressProvider longPress={longPressState}>
       <ThemeProvider defaultTheme="light" storageKey="theme">
         <TodosProvider>
           <ScreenSizeProvider>
@@ -18,7 +24,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
           </ScreenSizeProvider>
         </TodosProvider>
       </ThemeProvider>
-    </AppProvider>
+    </LongPressProvider>
   </React.StrictMode>
 );
 

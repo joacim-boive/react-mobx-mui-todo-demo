@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { DO_DIALOG } from "@/actions";
-import { useIsLongPressed } from "@/contexts/app-context";
+import { useIsLongPressed } from "@/hooks/use-is-long-pressed";
 
 type TPosition = { x: number; y: number };
 
